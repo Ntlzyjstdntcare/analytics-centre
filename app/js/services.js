@@ -12,15 +12,28 @@ angular.module('AnalyticsCentreApp.services', []).
         return ingestionServiceAPI;
     }).
 
-    factory('ingestionServiceFirstEDAService', function($http) {
-        var firstEDAApi = {};
+    factory('ingestionServiceNumberTopLevelElementsService', function($http) {
+        var numberTopLevelElementsApi = {};
 
-        firstEDAApi.getEDAResults = function() {
+        numberTopLevelElementsApi.getNumberTopLevelElements = function() {
             return $http({
                 method: 'GET',
-                url: 'http://localhost:8080/firsteda'
+                url: 'http://localhost:8080/numbertoplevelelements'
             })
         }
 
-        return firstEDAApi;
+        return numberTopLevelElementsApi;
+    }).
+
+    factory('saveToCassandraService', function($http) {
+        var saveToCassandraApi = {};
+
+        saveToCassandraApi.saveToCassandra = function() {
+            return $http({
+                method: 'POST',
+                url: 'http://localhost:8080/savetocassandra'
+            })
+        }
+
+        return saveToCassandraApi;
     });

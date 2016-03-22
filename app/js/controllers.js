@@ -1,14 +1,23 @@
 angular.module('AnalyticsCentreApp.controllers', []).
-    controller('socialCareLocationsController', function($scope, ingestionServiceAPIService, ingestionServiceFirstEDAService) {
+    controller('socialCareLocationsController', function($scope, ingestionServiceAPIService,
+                                                         ingestionServiceNumberTopLevelElementsService, saveToCassandraService) {
 
         $scope.myResults = [];
 
         //$scope.buttonTest = "";
 
-        $scope.firstEDAResults = [];
+        $scope.numberOfTopLevelElements = '';
 
-        ingestionServiceFirstEDAService.getEDAResults().success(function(response) {
-            $scope.firstEDAResults = response.results
+        $scope.saveToCassandraMessage = '';
+
+        $scope.saveToCassandra = function() {
+            //$scope.testValue = saveToCassandraService.saveToCassandra();
+            saveToCassandraService.saveToCassandra();
+            $scope.saveToCassandraMessage = 'Saved successfully!';
+        }
+
+        ingestionServiceNumberTopLevelElementsService.getNumberTopLevelElements().success(function(response) {
+            $scope.numberOfTopLevelElements = response.results
         })
         //$scope.buttonTestFunction = function() {
         //    $scope.buttonTest = "TestingWha";

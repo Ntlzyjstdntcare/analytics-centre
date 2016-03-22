@@ -12,6 +12,24 @@
     <tbody>
       <br/>
       <tr>
+        <td>
+          <button ng-click="topLevelElements = numberOfTopLevelElements" ng-init="topLevelElements=''">
+           Test
+          </button>
+          <span>
+            Test?: {{topLevelElements}}
+          </span>
+        </td>
+        <td>
+          <button ng-click="saveToCassandra();">
+            Save To Cassandra
+          </button>
+          <span>
+            {{testValue}}
+          </span>
+        </td>
+      </tr>
+      <tr>
         <td>social care locations</td>
       </tr>
       <br/>
@@ -27,14 +45,7 @@
       <tr ng-repeat="county in myResults.pharmacies.county track by $index">
         <td>{{county}}</td>
       </tr>
-      <tr>
-        <button ng-click="edaResults = firstEDAResults" ng-init="edaResults=''">
-          Test
-        </button>
-        <span>
-          Test?: {{edaResults}}
-        </span>
-      </tr>
+
       <!--<tr ng-repeat="location in locationList">-->
         <!--<td>{{$index + 1}}</td>-->
         <!--<td>-->
