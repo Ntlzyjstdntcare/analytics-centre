@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Analytics Centre</title>
+</head>
+
+<body ng-app="AnalyticsCentreApp" ng-controller="socialCareLocationsController">
+  <table>
+    <thead>
+      <tr><th colspan="4">Social Care Locations</th></tr>
+    </thead>
+    <tbody>
+      <br/>
+      <tr>
+        <td>social care locations</td>
+      </tr>
+      <br/>
+      <tr ng-repeat="county in myResults.social_care_locations.county track by $index">
+        <td>{{county}}</td>
+      </tr>
+
+      <tr>
+        <td>                 </td>
+        <td>pharmacies</td>
+      </tr>
+      <br/>
+      <tr ng-repeat="county in myResults.pharmacies.county track by $index">
+        <td>{{county}}</td>
+      </tr>
+      <tr>
+        <button ng-click="edaResults = firstEDAResults" ng-init="edaResults=''">
+          Test
+        </button>
+        <span>
+          Test?: {{edaResults}}
+        </span>
+      </tr>
+      <!--<tr ng-repeat="location in locationList">-->
+        <!--<td>{{$index + 1}}</td>-->
+        <!--<td>-->
+          <!--{{location.county}}&nbsp;{{location.city}}-->
+        <!--</td>-->
+      <!--</tr>-->
+    </tbody>
+  </table>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+</body>
+</html>
