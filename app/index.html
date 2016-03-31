@@ -4,7 +4,7 @@
   <title>Analytics Centre</title>
 </head>
 
-<body ng-app="AnalyticsCentreApp" ng-controller="socialCareLocationsController">
+<body ng-app="AnalyticsCentreApp" ng-controller="analyticsController">
   <table>
     <thead>
       <tr><th colspan="4">Social Care Locations</th></tr>
@@ -13,11 +13,11 @@
       <br/>
       <tr>
         <td>
-          <button ng-click="topLevelElements = numberOfTopLevelElements" ng-init="topLevelElements=''">
-           Test
+          <button ng-click="getNumberTopLevelElements();">
+           Retrieve
           </button>
           <span>
-            Test?: {{topLevelElements}}
+            Number of top level elements: {{numberOfTopLevelElements}}
           </span>
         </td>
         <td>
@@ -25,9 +25,13 @@
             Save To Cassandra
           </button>
           <span>
-            {{testValue}}
+            {{saveToCassandraMessage}}
           </span>
         </td>
+      </tr>
+      <tr>
+        <input type="text" ng-model="nullReplacementValue">
+        <button ng-click="replaceNullValues();">Replace Null values</button>
       </tr>
       <tr>
         <td>social care locations</td>

@@ -1,5 +1,5 @@
 angular.module('AnalyticsCentreApp.controllers', []).
-    controller('socialCareLocationsController', function($scope, ingestionServiceAPIService,
+    controller('analyticsController', function($scope, ingestionServiceAPIService,
                                                          ingestionServiceNumberTopLevelElementsService, saveToCassandraService) {
 
         $scope.myResults = [];
@@ -10,15 +10,25 @@ angular.module('AnalyticsCentreApp.controllers', []).
 
         $scope.saveToCassandraMessage = '';
 
+        $scope.nullReplacementValue = 'Type...';
+
+        //$scope.saveToCassandra = function() {
+        //    //$scope.testValue = saveToCassandraService.saveToCassandra();
+        //    saveToCassandraService.saveToCassandra();
+        //    $scope.saveToCassandraMessage = 'Saved successfully!';
+        //}
+
         $scope.saveToCassandra = function() {
-            //$scope.testValue = saveToCassandraService.saveToCassandra();
-            saveToCassandraService.saveToCassandra();
-            $scope.saveToCassandraMessage = 'Saved successfully!';
+            saveToCassandraService.saveToCassandra().success(function(response) {
+                $scope.saveToCassandraMessage = response.response;
+            })
         }
 
-        ingestionServiceNumberTopLevelElementsService.getNumberTopLevelElements().success(function(response) {
-            $scope.numberOfTopLevelElements = response.results
-        })
+        $scope.getNumberTopLevelElements = function() {
+            ingestionServiceNumberTopLevelElementsService.getNumberTopLevelElements().success(function(response) {
+                $scope.numberOfTopLevelElements = response.results;
+            })
+        }
         //$scope.buttonTestFunction = function() {
         //    $scope.buttonTest = "TestingWha";
         //}
