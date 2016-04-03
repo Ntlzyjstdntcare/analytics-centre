@@ -1,6 +1,6 @@
 angular.module('AnalyticsCentreApp.controllers', []).
     controller('analyticsController', function($scope, ingestionServiceAPIService,
-                                                         ingestionServiceNumberTopLevelElementsService, saveToCassandraService) {
+                                                         ingestionServiceEDAService, ingestionServiceCleaningService, saveToCassandraService) {
 
         $scope.myResults = [];
 
@@ -11,6 +11,8 @@ angular.module('AnalyticsCentreApp.controllers', []).
         $scope.saveToCassandraMessage = '';
 
         $scope.nullReplacementValue = 'Type...';
+
+        $scope.replacedNulls = '';
 
         //$scope.saveToCassandra = function() {
         //    //$scope.testValue = saveToCassandraService.saveToCassandra();
@@ -25,8 +27,14 @@ angular.module('AnalyticsCentreApp.controllers', []).
         }
 
         $scope.getNumberTopLevelElements = function() {
-            ingestionServiceNumberTopLevelElementsService.getNumberTopLevelElements().success(function(response) {
+            ingestionServiceEDAService.getNumberTopLevelElements().success(function(response) {
                 $scope.numberOfTopLevelElements = response.results;
+            })
+        }
+
+        $scope.replaceNullValues = function() {
+            ingestionServiceCleaningService.replaceNullValues($scope.nullReplacementValue).success(function(response) {
+                $scope.myResults = JSON.parse(response.response);
             })
         }
         //$scope.buttonTestFunction = function() {

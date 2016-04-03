@@ -12,7 +12,7 @@ angular.module('AnalyticsCentreApp.services', []).
         return ingestionServiceAPI;
     }).
 
-    factory('ingestionServiceNumberTopLevelElementsService', function($http) {
+    factory('ingestionServiceEDAService', function($http) {
         var numberTopLevelElementsApi = {};
 
         numberTopLevelElementsApi.getNumberTopLevelElements = function() {
@@ -23,6 +23,19 @@ angular.module('AnalyticsCentreApp.services', []).
         }
 
         return numberTopLevelElementsApi;
+    }).
+
+    factory('ingestionServiceCleaningService', function($http) {
+        var replaceNullValuesApi = {};
+
+        replaceNullValuesApi.replaceNullValues = function(replacementValue) {
+            return $http({
+                method: 'POST',
+                url: 'http://localhost:8080/replacenullvalues?replacementValue=' + replacementValue
+            });
+        }
+
+        return replaceNullValuesApi;
     }).
 
     factory('saveToCassandraService', function($http) {
