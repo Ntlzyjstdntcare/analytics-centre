@@ -30,14 +30,35 @@
         </td>
       </tr>
       <tr>
-        <button ng-click="replaceNullValues();">Replace Null values</button>
-        <input type="text" ng-model="nullReplacementValue">
-        <span>{{ replacedNulls.social_care_locations.county }}</span>
+        <td>
+          </br>
+          <button ng-click="replaceNullValues();">Replace Null values</button>
+          <input type="text" ng-model="nullReplacementValue">
+          <!--<span>{{ replacedNulls }}</span>-->
+        </td>
+        <td>
+          </br>
+          <button ng-click="groupByKey();">Group by key</button>
+          <input type="text" ng-model="valueToGroupBy">
+          <span>{{ groupedValues }}</span>
+        </td>
+
       </tr>
       <tr>
+        <td>
+          </br>
+          </br>
+        </td>
         <td>social care locations</td>
       </tr>
       <br/>
+      <!-- Assuming that I'll want to generify this code, since I won't know the key names of json coming in.
+            I guess that what I'll want to do is use my function that finds the top level elements, and use those values.
+            I can have a function that finds the second level elements as well, and so on. Then I plug their values into here,
+            or in the controller.-->
+      <!-- Furthermore, To-Do. The below construct only works when I'm looking at an array. I'll have to have some sort of
+           check which will allow me to see if the value of a field is an array. Again, there must be established best practice
+           for displaying and visualising json data. I'll just have to follow it.-->
       <tr ng-repeat="county in myResults.social_care_locations.county track by $index">
         <td>{{county}}</td>
       </tr>

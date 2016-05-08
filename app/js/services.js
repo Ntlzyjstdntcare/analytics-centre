@@ -49,4 +49,17 @@ angular.module('AnalyticsCentreApp.services', []).
         }
 
         return saveToCassandraApi;
+    }).
+
+    factory('ingestionServiceExplorationService', function($http) {
+        var groupByKeyApi = {};
+
+        groupByKeyApi.groupByKey = function(keyToGroupBy) {
+            return $http({
+                method: 'POST',
+                url: 'http://localhost:8080/groupbykey?keyToGroupBy=' + keyToGroupBy
+            });
+        }
+
+        return groupByKeyApi;
     });
