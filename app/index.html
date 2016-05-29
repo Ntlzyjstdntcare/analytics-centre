@@ -2,88 +2,30 @@
 <html>
 <head>
   <title>Analytics Centre</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="bootstrap-3.3.6-dist/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="bootstrap-3.3.6-dist/css/bootstrap-theme.min.css"
+        integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
 </head>
 
-<body ng-app="AnalyticsCentreApp" ng-controller="analyticsController">
-  <table>
-    <thead>
-      <tr><th colspan="4">Social Care Locations</th></tr>
-    </thead>
-    <tbody>
-      <br/>
-      <tr>
-        <td>
-          <button ng-click="getNumberTopLevelElements();">
-           Retrieve
-          </button>
-          <span>
-            Number of top level elements: {{numberOfTopLevelElements}}
-          </span>
-        </td>
-        <td>
-          <button ng-click="saveToCassandra();">
-            Save To Cassandra
-          </button>
-          <span>
-            {{saveToCassandraMessage}}
-          </span>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          </br>
-          <button ng-click="replaceNullValues();">Replace Null values</button>
-          <input type="text" ng-model="nullReplacementValue">
-          <!--<span>{{ replacedNulls }}</span>-->
-        </td>
-        <td>
-          </br>
-          <button ng-click="groupByKey();">Group by key</button>
-          <input type="text" ng-model="valueToGroupBy">
-          <span>{{ groupedValues }}</span>
-        </td>
-
-      </tr>
-      <tr>
-        <td>
-          </br>
-          </br>
-        </td>
-        <td>social care locations</td>
-      </tr>
-      <br/>
-      <!-- Assuming that I'll want to generify this code, since I won't know the key names of json coming in.
-            I guess that what I'll want to do is use my function that finds the top level elements, and use those values.
-            I can have a function that finds the second level elements as well, and so on. Then I plug their values into here,
-            or in the controller.-->
-      <!-- Furthermore, To-Do. The below construct only works when I'm looking at an array. I'll have to have some sort of
-           check which will allow me to see if the value of a field is an array. Again, there must be established best practice
-           for displaying and visualising json data. I'll just have to follow it.-->
-      <tr ng-repeat="county in myResults.social_care_locations.county track by $index">
-        <td>{{county}}</td>
-      </tr>
-
-      <tr>
-        <td>                 </td>
-        <td>pharmacies</td>
-      </tr>
-      <br/>
-      <tr ng-repeat="county in myResults.pharmacies.county track by $index">
-        <td>{{county}}</td>
-      </tr>
-
-      <!--<tr ng-repeat="location in locationList">-->
-        <!--<td>{{$index + 1}}</td>-->
-        <!--<td>-->
-          <!--{{location.county}}&nbsp;{{location.city}}-->
-        <!--</td>-->
-      <!--</tr>-->
-    </tbody>
-  </table>
+<body ng-app="AnalyticsCentreApp"> <!--ng-controller="analyticsController">-->
+  <ng-view></ng-view>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
+  <script src="d3/d3.min.js" charset="utf-8"></script>
+  <script src="js/jquery.min.js"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="bootstrap-3.3.6-dist/js/bootstrap.min.js"
+          integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>
