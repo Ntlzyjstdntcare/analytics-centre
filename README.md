@@ -1,3 +1,22 @@
+Simple AngularJS project built on the angular-seed project. Surfaces the results of the data inspection and manipulation performed by the ingestion-service in a rudimentary way. Contains no tests.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # angular-seed — the seed for AngularJS apps
 
 This project is an application skeleton for a typical [AngularJS](http://angularjs.org/) web app.
